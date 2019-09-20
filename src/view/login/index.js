@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './login.css';
+//Firebase imports
+import firebase from '../../config/firebase';
+import 'firebase/auth';
 
 function Login(){
+    const [email, setEmail] = useState();
+    const [senha, setSenha] = useState();
+    const [msgTipo, setMsgTipo] = useState();
+
+    function logar(){
+      firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
+          setMsgTipo('sucesso');
+      }).catch(erro => {
+        setMsgTipo('erro');
+      });
+    }
+
     return(
         <div className="login-content d-flex align-items-center">
         <form className="form-signin mx-auto">
@@ -12,19 +27,19 @@ function Login(){
         </div>
       
         <div className="form-label-group">
-          <input type="email" id="inputEmail" class="form-control my-2" placeholder="Email"/>
+          <input onChange={(e) => setEmail(e.target.value) } type="email" id="inputEmail" class="form-control my-2" placeholder="Email"/>
         </div>
       
         <div class="form-label-group">
-          <input type="password" id="inputPassword" class="form-control my-2" placeholder="Senha"/>
+          <input onChange={(e) => setSenha(e.target.value) } type="password" id="inputPassword" class="form-control my-2" placeholder="Senha"/>
         </div>
 
-        <button className="btn btn-lg btn-primary btn-block btn-login" type="submit">Entrar</button>
+        <button onClick={logar} className="btn btn-lg btn-primary btn-block btn-login" type="button">Entrar</button>
 
         <div className="msg-login text-center my-5 ub">
-            <span><strong>WOW! </strong> Voce esta conectado! &#128526;</span>
-            <br/>
-            <span><strong>Ops! </strong> Verifique se o usuario ou senha esta correto! &#128549;</span>
+          {msgTipo === 'sucesso' && <span><strong>WOW! </strong> Voce esta conectado! &#128526;</span>}
+          {msgTipo === 'erro' && <span><strong>Ops! </strong> Verifique se o usuario ou senha esta correto! &#128549;</span>}
+            
         </div>
 
         <div className="op-login mt-3 text-center">
