@@ -1,0 +1,17 @@
+.form-login{
+    max-width: 650px;
+}
+.btn-cadastro{
+    background-color: #680610;
+    color: aliceblue;
+}
+.btn-cadastro:hover{
+    background-color:  #A52A2A;
+    color: aliceblue;
+}
+.ub{
+    color: #680610;
+}
+.bgb{
+    background-color: #F5FFFA;
+}

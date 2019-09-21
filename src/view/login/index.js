@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
+import {Link} from 'react-router-dom';
 //Firebase imports
 import firebase from '../../config/firebase';
 import 'firebase/auth';
@@ -43,8 +44,8 @@ function Login(){
         </div>
 
         <div className="op-login mt-3 text-center">
-        <a href="#" className="mx-2 font-weight-bold">Recuperar Senha</a>
-        <a href="#" className="mx-2 font-weight-bold">Criar Acesso Admin</a>
+        <Link to className="mx-2 font-weight-bold">Recuperar Senha</Link>
+        <Link to='novousuario' className="mx-2 font-weight-bold">Criar Acesso Admin</Link>
         </div>
         <p className="mt-5 mb-3 text-muted text-center font-weight-bold">Unibalsas &copy; 2019</p>
       </form>
