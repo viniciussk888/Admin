@@ -21,8 +21,8 @@ function Login() {
       setMsgTipo('sucesso');
       setTimeout(() => {
         dispatch({ type: 'LOG_IN', usuarioEmail: email });
-      },2000);
-      
+      }, 1000);
+
     }).catch(erro => {
       setMsgTipo('erro');
     });
@@ -33,13 +33,13 @@ function Login() {
       <Navbar></Navbar>
       <div className="login-content d-flex align-items-center">
 
-      {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null}
+        {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/' /> : null}
 
         <form className="form-signin mx-auto">
           <div className="text-center mb-4">
-            <img className="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72" />
-            <h1 className="h3 mb-3 font-weight-normal ub font-weight-bold">Login</h1>
-            <p className="ub font-weight-bold">Painel de Gerenciamento de Questoes</p>
+          <span className="navbar-brand text-white font-weight-bold"><img src="logo.png" alt="AVI QUIZ" height="100px" width="150px"/></span>
+            <h1 className="h3 mt-3 mb-3 font-weight-normal ub font-weight-bold">Login</h1>
+            <p className="ub font-weight-bold">Painel de Gerenciamento de Questões</p>
           </div>
 
           <div className="form-label-group">
@@ -59,7 +59,7 @@ function Login() {
           </div>
 
           <div className="op-login mt-3 text-center">
-            <Link to className="mx-2 font-weight-bold">Recuperar Senha</Link>
+            <Link to='recuperarsenha' className="mx-2 font-weight-bold">Recuperar Senha</Link>
             <Link to='novousuario' className="mx-2 font-weight-bold">Criar Acesso Admin</Link>
           </div>
           <p className="mt-5 mb-3 text-muted text-center font-weight-bold">Unibalsas &copy; 2019</p>

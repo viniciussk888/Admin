@@ -67,8 +67,10 @@ function NovoUsuario() {
         <Navbar></Navbar>
         <div className="form-cadastro">
             <form className="text-center form-login mx-auto mt-5">
-                <h1 className="h3 mb-3 text-black font-weight-bold ub">Cadastro</h1>
-                <p className="ub font-weight-bold">Adicionar novo usuario administrador</p>
+            <div className="text-center mb-4">
+            <i class="fas fa-user-plus fa-7x ub"></i>
+                <p className="ub font-weight-bold mt-3">Adicionar novo usuario administrador</p>
+                </div>
                 <input onChange={(e) => setNome(e.target.value)} type="text" className="form-control my-2" placeholder="Nome" />
                 <input onChange={(e) => setCod(e.target.value)} type="text" className="form-control my-2" placeholder="Cod.Professor" />
                 <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="Email" />

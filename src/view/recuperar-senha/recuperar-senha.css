@@ -1,0 +1,12 @@
+.ub{
+    color: #680610;
+}
+.btn-enviar{
+    background-color: #680610;
+    color: #fff;
+}
+
+.btn-enviar:hover{
+    background-color: #A52A2A;
+    color: #fff;
+}
