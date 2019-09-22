@@ -15,6 +15,8 @@ function NovoUsuario() {
     const [msg, setMsg] = useState();
     const [carregando, setCarregando] = useState();
 
+    const db = firebase.firestore();
+
     function cadastrarInFireStore() {
         //função de cadastrar no firestore o professor
     }
