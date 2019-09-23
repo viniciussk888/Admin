@@ -19,6 +19,16 @@ function NovoUsuario() {
 
     function cadastrarInFireStore() {
         //função de cadastrar no firestore o professor
+        db.collection('administrador').add({
+            nome: nome,
+            codigoProfessor: codProf,
+            email: email,
+            dataCadastro: new Date()
+        }).then(() => {
+            setMsgTipo('sucesso');
+        }).catch(erro => {
+            setMsgTipo('erro')
+        });
     }
 
     function cadastrar() {
@@ -27,9 +37,9 @@ function NovoUsuario() {
 
         setMsgTipo(null);
 
-        if (!email || !senha || !nome || !codProf) {
+        if (!email || !senha || !nome ) {
             setMsgTipo('erro')
-            setMsg('Você precisa informar todos os dados para fazer o cadastro!')
+            setMsg('Você precisa informar os dados para fazer o cadastro! PS. CodProf não obrigatorio.')
             setCarregando(0);
             return;
         } else if (senha != senha2) {
@@ -41,6 +51,7 @@ function NovoUsuario() {
 
         firebase.auth().createUserWithEmailAndPassword(email, senha).then(resultado => {
             setCarregando(0);
+            cadastrarInFireStore();
             setMsgTipo('sucesso')
         }).catch(erro => {
             setCarregando(0);

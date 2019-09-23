@@ -18,11 +18,18 @@ function CadastroQuestao() {
     const [altC, setAltC] = useState();
     const [altD, setAltD] = useState();
     const [altCerta, setaltCerta] = useState();
-    const [userEmail, setUserEmail] = useState();
+    const [carregando, setCarregando] = useState();
+    const userEmail = useSelector(state => state.usuarioEmail);
 
     const db = firebase.firestore();
 
     function submeter() {
+        setCarregando(1);
+        if(!curso || !enunciado || !altA || !altB || !altC || !altD || !altCerta){
+            alert("Todos os campos precisam ser preenchidos!");
+            setCarregando(0);
+            return;
+        }
         setMsgTipo(null);
         switch (curso) {
             case 'SI':
@@ -33,11 +40,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'direito':
@@ -48,11 +58,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'adm':
@@ -63,11 +76,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'agro':
@@ -78,11 +94,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'contabeis':
@@ -93,11 +112,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'pedagogia':
@@ -108,11 +130,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'gestao':
@@ -123,11 +148,14 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             case 'publicitaria':
@@ -138,15 +166,19 @@ function CadastroQuestao() {
                     C: altC,
                     D: altD,
                     altCerta: altCerta,
-                    postada: new Date()
+                    postada: new Date(),
+                    autor: userEmail
                 }).then(() => {
                     setMsgTipo('sucesso');
+                    setCarregando(0);
                 }).catch(erro => {
-                    setMsgTipo('erro')
+                    setMsgTipo('erro');
+                    setCarregando(0);
                 });
                 break;
             default:
-                setMsgTipo('erro')
+                setMsgTipo('erro');
+                setCarregando(0);
 
         }
     }
@@ -160,7 +192,7 @@ function CadastroQuestao() {
                     <h3 className="mx-auto font-weight-bold mt-2 mb-4 ub">Nova Questão</h3>
                 </div>
 
-                <form>
+                <form className="text-center form-login mx-auto">
                     <div className="form-group">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
@@ -178,15 +210,15 @@ function CadastroQuestao() {
                                 <option value="publicitaria">Produção Publicitária</option>
                             </select>
                         </div>
-                        <label className='ub font-weight-bold'>Enunciado:</label>
+                        <label className='ub font-weight-bold float-left'>Enunciado:</label>
                         <textarea onChange={(e) => setEnunciado(e.target.value)} className="form-control res"></textarea>
-                        <label className='ub font-weight-bold'>Alternativa A:</label>
+                        <label className='ub font-weight-bold float-left'>Alternativa A:</label>
                         <input onChange={(e) => setAltA(e.target.value)} type="text" className="form-control"></input>
-                        <label className='ub font-weight-bold'>Alternativa B:</label>
+                        <label className='ub font-weight-bold float-left'>Alternativa B:</label>
                         <input onChange={(e) => setAltB(e.target.value)} type="text" className="form-control"></input>
-                        <label className='ub font-weight-bold'>Alternativa C:</label>
+                        <label className='ub font-weight-bold float-left'>Alternativa C:</label>
                         <input onChange={(e) => setAltC(e.target.value)} type="text" className="form-control"></input>
-                        <label className='ub font-weight-bold'>Alternativa D:</label>
+                        <label className='ub font-weight-bold float-left'>Alternativa D:</label>
                         <input onChange={(e) => setAltD(e.target.value)} type="text" className="form-control"></input>
                     </div>
                     <div className="input-group mb-3">
@@ -201,9 +233,12 @@ function CadastroQuestao() {
                             <option value="d">D</option>
                         </select>
                     </div>
-                    <button onClick={submeter} type="button" className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro">Enviar Questão</button>
+                {
+                    carregando ? <div className="spinner-border text-danger" role="status"><span className="sr-only">Loading...</span></div>
+                    : <button onClick={submeter} type="button" className="mb-3 btn btn-lg btn-block mt-3 btn-cadastro">Enviar Questão</button>
+                }
                 </form>
-                <div className="msg-login text-center my-5 ub">
+                <div className="msg-login text-center my-2 ub">
                     {msgTipo === 'sucesso' && <span>Questão Enviada com Sucesso! &#128526;</span>}
                     {msgTipo === 'erro' && <span><strong>Ops! </strong> Ocorreu um erro ao Enviar a Questão! &#128549;</span>}
 
