@@ -3,12 +3,12 @@ import './cadastro-questao.css';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar/';
 import { useSelector } from 'react-redux';
-
 //Firebase imports
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
 function CadastroQuestao() {
+
 
     const [msgTipo, setMsgTipo] = useState();
     const [curso, setCurso] = useState();
