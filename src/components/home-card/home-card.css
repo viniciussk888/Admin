@@ -9,7 +9,7 @@
 }
 
 .btn-detalhes:hover{
-    background-color: #f21667;
+    background-color: #A52A2A;
     color: #fff;
 }
 
@@ -22,4 +22,7 @@
 .img-cartao{
     max-height: 220px;
     min-width: 100%;
+}
+.bgc{
+    background-color: #FBEFEF;
 }
