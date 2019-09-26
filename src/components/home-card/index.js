@@ -2,7 +2,7 @@ import React, { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './home-card.css';
 
-function HomeCard({key, img, nome}){
+function HomeCard({id, img, nome}){
     return(
         <div className="col-md-3 col-sm-12">
             <img src={img} className="card-img-top img-cartao btn-detalhes" alt="Imagem do Evento" />
@@ -15,11 +15,11 @@ function HomeCard({key, img, nome}){
 
                 <div className="row rodape-card d-flex align-items-center">
                     <div className="col-6">
-                        <Link to='#' className="btn btn-sm btn-detalhes">+ Acessar</Link>                    
+                        <Link to={'/gerenciaquestao/' + id} className="btn btn-sm btn-detalhes">+ Acessar</Link>                    
                     </div>
 
                     <div className="col-6 text-right">
-                    <i class="fas fa-exclamation-circle"></i><span>Questões: 5</span>
+                    <i class="fab fa-android"></i>
                     </div>
                 </div>
 

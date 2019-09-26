@@ -30,8 +30,8 @@ function Home() {
         <Navbar/>
         {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
         <h5>Bem vindo: {useSelector(state => state.usuarioEmail)}</h5>
-        <div className="row">
-        {cursos.map(item => <HomeCard key={item.id} img={item.urlImage} nome={item.nome} />) }
+        <div className="row p-3">
+        {cursos.map(item => <HomeCard key={item.id} id={item.id} img={item.urlImage} nome={item.nome} />) }
         </div>
         
         </>
