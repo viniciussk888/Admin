@@ -10,6 +10,7 @@ import NovoUsuario from './view/usuario-novo/'
 import Home from './view/home/'
 import UsuarioRecuperarSenha from './view/recuperar-senha/'
 import CadastroQuestao from './view/cadastro-questao/'
+import ListarQuestoes from './view/lista-questoes/'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route exact path='/login' component={Login} />
       <Route exact path='/recuperarsenha' component={UsuarioRecuperarSenha} />
       <Route exact path='/cadastroquestao' component={CadastroQuestao} />
+      <Route exact path='/listarquestao' component={ListarQuestoes} />
     </Router>
     </Provider>
   );
