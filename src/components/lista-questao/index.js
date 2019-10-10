@@ -1,11 +1,12 @@
 import React, { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './lista-questao.css';
 
 function Listagem({id,enunciado,altCerta,autor}){
     return(
         <div className='m-3'>
         <div className="table-responsive">
-          <table className="table table-striped table-sm">
+          <table className="table table-striped table-sm table-dark tbt">
             <thead>
               <tr>
                 <th>ID</th>
