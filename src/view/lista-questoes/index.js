@@ -10,9 +10,13 @@ function ListarQuestoes() {
 
   const [questoes, setQuestoes] = useState([]);
   const listaQuestoes = [];
+  //gambiarra
+  var url = window.location;
+  url = url.toString()
+  url = url.split("?");
 
   useEffect(() => {
-    firebase.firestore().collection('SI').get().then(async (resultado) => {
+    firebase.firestore().collection(url[1]).get().then(async (resultado) => {
       await resultado.docs.forEach(doc => {
         listaQuestoes.push({
           id: doc.id,

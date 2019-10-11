@@ -15,7 +15,7 @@ function HomeCard({id, img, nome}){
 
                 <div className="row rodape-card d-flex align-items-center">
                     <div className="col-6">
-                        <Link to={'/gerenciaquestao/' + id} className="btn btn-sm btn-detalhes">+ Acessar</Link>                    
+                        <Link to={'/listarquestao/?'+id} className="btn btn-sm btn-detalhes">+ Acessar</Link>                    
                     </div>
 
                     <div className="col-6 text-right">
