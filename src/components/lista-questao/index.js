@@ -34,7 +34,7 @@ function Listagem({id,enunciado,altCerta,autor,cursoCol}){
                 <td>{altCerta}</td>
                 <td>{autor}</td>
                 <td>
-                  <button type='button' className='btn btn-primary mr-1'>Editar</button>
+                  <Link to={'/atulizarquestao/?'+id+'?'+cursoCol} className="btn btn-danger ml-1">Editar</Link>
                   <button type='button' className='btn btn-danger ml-1' onClick={deletarQuestao}>Excluir</button>
                 </td>
               </tr>

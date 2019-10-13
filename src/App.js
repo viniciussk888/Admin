@@ -11,6 +11,7 @@ import Home from './view/home/'
 import UsuarioRecuperarSenha from './view/recuperar-senha/'
 import CadastroQuestao from './view/cadastro-questao/'
 import ListarQuestoes from './view/lista-questoes/'
+import AtualizaQuestoes from './view/atualizar-questao/'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route exact path='/recuperarsenha' component={UsuarioRecuperarSenha} />
       <Route exact path='/cadastroquestao' component={CadastroQuestao} />
       <Route exact path='/listarquestao' component={ListarQuestoes} />
+      <Route exact path='/atulizarquestao' component={AtualizaQuestoes} />
     </Router>
     </Provider>
   );
