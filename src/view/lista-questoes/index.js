@@ -33,7 +33,7 @@ function ListarQuestoes() {
     <>
       <Navbar />
       <h2 className='m-2'>Gerenciar Questoes</h2>
-      {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} autor={item.autor} cursoCol={url[1]} />)}
+      {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} A={item.A} B={item.B} C={item.C} D={item.D} autor={item.autor} cursoCol={url[1]} />)}
     </>
   )
 }
