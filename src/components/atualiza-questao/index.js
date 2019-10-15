@@ -11,13 +11,12 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,altAUP,altBUP,altCUP,altDU
 
 
     const [msgTipo, setMsgTipo] = useState();
-    const [curso, setCurso] = useState();
-    const [enunciado, setEnunciado] = useState();
+    const [enunciado, setEnunciado] = useState(enunciadoUP);
     const [altA, setAltA] = useState();
     const [altB, setAltB] = useState();
     const [altC, setAltC] = useState();
     const [altD, setAltD] = useState();
-    const [altCerta, setaltCerta] = useState();
+    const [altCerta, setaltCerta] = useState(altCertaUP);
     const [carregando, setCarregando] = useState();
     const userEmail = useSelector(state => state.usuarioEmail);
 
@@ -63,7 +62,7 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,altAUP,altBUP,altCUP,altDU
                             <div className="input-group-prepend">
                                 <label className="input-group-text ub" for="inputGroupSelect01">Curso</label>
                             </div>
-                            <select onChange={(e) => setCurso(e.target.value)} className="custom-select" id="inputGroupSelect01">
+                            <select className="custom-select" id="inputGroupSelect01">
                                 <option disabled selected>-- {cursoColUP} --</option>
                             </select>
                         </div>
