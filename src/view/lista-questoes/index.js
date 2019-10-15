@@ -15,6 +15,7 @@ function ListarQuestoes() {
   url = url.toString()
   url = url.split("?");
 
+
   useEffect(() => {
     firebase.firestore().collection(url[1]).get().then(async (resultado) => {
       await resultado.docs.forEach(doc => {
@@ -33,6 +34,7 @@ function ListarQuestoes() {
     <>
       <Navbar />
       <h2 className='m-2'>Gerenciar Questoes</h2>
+      {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
       {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} A={item.A} B={item.B} C={item.C} D={item.D} autor={item.autor} cursoCol={url[1]} />)}
     </>
   )

@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import './atualiza-questao.css';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Navbar from '../../components/navbar/';
 import { useSelector } from 'react-redux';
 //Firebase imports
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
-function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,altAUP,altBUP,altCUP,altDUP,altCertaUP}) {
-
+function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
 
     const [msgTipo, setMsgTipo] = useState();
     const [enunciado, setEnunciado] = useState(enunciadoUP);
-    const [altA, setAltA] = useState();
-    const [altB, setAltB] = useState();
-    const [altC, setAltC] = useState();
-    const [altD, setAltD] = useState();
+    const [altA, setAltA] = useState(A);
+    const [altB, setAltB] = useState(B);
+    const [altC, setAltC] = useState(C);
+    const [altD, setAltD] = useState(D);
     const [altCerta, setaltCerta] = useState(altCertaUP);
     const [carregando, setCarregando] = useState();
     const userEmail = useSelector(state => state.usuarioEmail);
@@ -69,13 +68,13 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,altAUP,altBUP,altCUP,altDU
                         <label className='ub font-weight-bold float-left'>Enunciado:</label>
                         <textarea onChange={(e) => setEnunciado(e.target.value)} className="form-control res">{enunciadoUP}</textarea>
                         <label className='ub font-weight-bold float-left'>Alternativa A:</label>
-                        <input onChange={(e) => setAltA(e.target.value)} type="text" className="form-control">{altAUP}</input>
+                        <input onChange={(e) => setAltA(e.target.value)} type="text" className="form-control" placeholder={A}></input>
                         <label className='ub font-weight-bold float-left'>Alternativa B:</label>
-                        <input onChange={(e) => setAltB(e.target.value)} type="text" className="form-control">{altBUP}</input>
+                        <input onChange={(e) => setAltB(e.target.value)} type="text" className="form-control" placeholder={B}></input>
                         <label className='ub font-weight-bold float-left'>Alternativa C:</label>
-                        <input onChange={(e) => setAltC(e.target.value)} type="text" className="form-control">{altCUP}</input>
+                        <input onChange={(e) => setAltC(e.target.value)} type="text" className="form-control" placeholder={C}></input>
                         <label className='ub font-weight-bold float-left'>Alternativa D:</label>
-                        <input onChange={(e) => setAltD(e.target.value)} type="text" className="form-control">{altDUP}</input>
+                        <input onChange={(e) => setAltD(e.target.value)} type="text" className="form-control" placeholder={D}></input>
                     </div>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">

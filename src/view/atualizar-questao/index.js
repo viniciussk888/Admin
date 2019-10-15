@@ -28,7 +28,8 @@ function AtualizaQuestoes() {
   return (
     <>
       <Navbar />
-      {questoes.map(item => <AtualizaQuestao idUP={item.id} enunciadoUP={item.enunciado} /*altAUP={item.A} altBUP={item.B} altCUP={item.C} altDUP={item.D} */altCertaUP={item.altCerta} cursoColUP={url[2]} />)}
+      {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
+      {questoes.map(item => <AtualizaQuestao idUP={item.id} enunciadoUP={item.enunciado} A={item.A} B={item.B} C={item.C} D={item.D} altCertaUP={item.altCerta} cursoColUP={url[2]} />)}
     </>
   )
 }
