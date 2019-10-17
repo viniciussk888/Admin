@@ -9,10 +9,6 @@ function HomeCard({id, img, nome}){
 
             <div className="card-body bgc mb-2">
                 <h5>{nome}</h5>
-                <p className="card-text text-justify">
-                Acesse para editar ou excluir questoes do Quiz!
-                </p>
-
                 <div className="row rodape-card d-flex align-items-center">
                     <div className="col-6">
                         <Link to={'/listarquestao/?'+id} className="btn btn-sm btn-detalhes">+ Acessar</Link>                    

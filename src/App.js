@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import store from '../src/store/';
+import {store,persistor} from '../src/store/';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
 /* PAGINAS   */
 import Login from './view/login/'
@@ -12,10 +13,12 @@ import UsuarioRecuperarSenha from './view/recuperar-senha/'
 import CadastroQuestao from './view/cadastro-questao/'
 import ListarQuestoes from './view/lista-questoes/'
 import AtualizaQuestoes from './view/atualizar-questao/'
+import AtualizarUsuario from './view/gerenciar-usuario/'
 
 function App() {
   return (
     <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
     <Router>
       <Route exact path='/' component={Home} />
       <Route exact path='/novousuario' component={NovoUsuario} />
@@ -24,7 +27,9 @@ function App() {
       <Route exact path='/cadastroquestao' component={CadastroQuestao} />
       <Route exact path='/listarquestao' component={ListarQuestoes} />
       <Route exact path='/atulizarquestao' component={AtualizaQuestoes} />
+      <Route exact path='/gerenciarusuario' component={AtualizarUsuario} />
     </Router>
+    </PersistGate>
     </Provider>
   );
 }

@@ -14,8 +14,8 @@ function Home() {
     const [cursos, setCursos] = useState([]);
     const listaCursos = [];
 
-    setInterval(() => {
-        //useEffect(() => {
+    
+        useEffect(() => {
         firebase.firestore().collection('homeCursos').get().then(async (resultado) => {
             await resultado.docs.forEach(doc => {
                 listaCursos.push({
@@ -26,9 +26,9 @@ function Home() {
             })
             setCursos(listaCursos);
 
-            //  })
+             })
         })
-    }, 2000);
+    
 
     return (
         <>
