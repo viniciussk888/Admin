@@ -37,7 +37,8 @@ function ListarQuestoes() {
       <Navbar />
       <h2 className='m-2'>Gerenciar Questoes</h2>
       <div className='row p-3'>
-      <input onChange={(e) => setPesquisa(e.target.value)} type="text" className='form-control text-center' placeholder='Buscar pelo enunciado'></input>
+      <input onChange={(e) => setPesquisa(e.target.value)} type="text" className='form-control text-center m-3' placeholder='Buscar pelo enunciado'></input>
+      <h5 className='ml-3 text-right'>Total: {questoes.length}</h5>
       </div>
       {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
       {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} A={item.A} B={item.B} C={item.C} D={item.D} autor={item.autor} cursoCol={url[1]} />)}

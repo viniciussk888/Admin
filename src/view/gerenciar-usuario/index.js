@@ -15,8 +15,21 @@ function AtualizarUsuario() {
     const [msg, setMsg] = useState();
     const [carregando, setCarregando] = useState();
 
-    const db = firebase.firestore();
+    //const db = firebase.firestore();
+   /* firebase.firestore().collection('administrador').get().then(async (resultado) => {
+        await resultado.docs.forEach(doc => {
+          listaQuestoes.push({
+            id: doc.id,
+            ...doc.data()
+          })
+        
+        })
+        setQuestoes(listaQuestoes);
+  
+      }) */
 
+    function update(){
+    }
     
 
     return (
