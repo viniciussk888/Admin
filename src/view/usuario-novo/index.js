@@ -19,10 +19,12 @@ function NovoUsuario() {
 
     function cadastrarInFireStore() {
         //função de cadastrar no firestore o professor
-        db.collection('administrador').add({
+        var user = firebase.auth().currentUser;
+        var uid = user.uid;
+        db.collection('administrador').doc(uid).set({
             nome: nome,
             codigoProfessor: codProf,
-            email: email,
+            //email: email,
             dataCadastro: new Date()
         }).then(() => {
             setMsgTipo('sucesso');

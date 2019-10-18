@@ -1,0 +1,14 @@
+.ub{
+    color: #680610;
+}
+.res{
+    resize: none
+}
+.btn-cadastro{
+    background-color: #680610;
+    color: aliceblue;
+}
+.btn-cadastro:hover{
+    background-color:  #A52A2A;
+    color: aliceblue;
+}
