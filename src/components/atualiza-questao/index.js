@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 
-function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
+function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,nivel,A,B,C,D,E,altCertaUP}) {
 
     const [msgTipo, setMsgTipo] = useState();
     const [enunciado, setEnunciado] = useState(enunciadoUP);
@@ -15,6 +15,7 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
     const [altB, setAltB] = useState(B);
     const [altC, setAltC] = useState(C);
     const [altD, setAltD] = useState(D);
+    const [altE, setAltE] = useState(E);
     const [altCerta, setaltCerta] = useState(altCertaUP);
     const [carregando, setCarregando] = useState();
     const userEmail = useSelector(state => state.usuarioEmail);
@@ -35,6 +36,7 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -64,6 +66,12 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
                             <select className="custom-select" id="inputGroupSelect01">
                                 <option disabled selected>-- {cursoColUP} --</option>
                             </select>
+                            <div className="input-group-prepend">
+                                <label className="input-group-text ub" for="inputGroupSelect02">Nivel</label>
+                            </div>
+                            <select className="custom-select" id="inputGroupSelect02">
+                                <option disabled selected>-- {nivel} --</option>
+                            </select>
                         </div>
                         <label className='ub font-weight-bold float-left'>Enunciado:</label>
                         <textarea onChange={(e) => setEnunciado(e.target.value)} className="form-control res">{enunciadoUP}</textarea>
@@ -75,6 +83,8 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
                         <input onChange={(e) => setAltC(e.target.value)} type="text" className="form-control" placeholder={C}></input>
                         <label className='ub font-weight-bold float-left'>Alternativa D:</label>
                         <input onChange={(e) => setAltD(e.target.value)} type="text" className="form-control" placeholder={D}></input>
+                        <label className='ub font-weight-bold float-left'>Alternativa E:</label>
+                        <input onChange={(e) => setAltE(e.target.value)} type="text" className="form-control" placeholder={E}></input>
                     </div>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
@@ -86,6 +96,7 @@ function AtualizaQuestao({idUP,cursoColUP,enunciadoUP,A,B,C,D,altCertaUP}) {
                             <option value="b">B</option>
                             <option value="c">C</option>
                             <option value="d">D</option>
+                            <option value="e">E</option>
                         </select>
                     </div>
                 {

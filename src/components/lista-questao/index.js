@@ -4,7 +4,7 @@ import './lista-questao.css';
 import firebase from '../../config/firebase'
 
 
-function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D}){
+function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D, E, nivel}){
 
   function deletarQuestao(){
     firebase.firestore().collection(cursoCol).doc(id).delete().then(function() {
@@ -28,6 +28,9 @@ function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D}){
     case 'd':
       enumCerta = D;
       break;
+    case 'e':
+      enumCerta = E;
+      break;  
     default:
   }
 
@@ -40,6 +43,7 @@ function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D}){
                 <th>ID</th>
                 <th>Enunciado</th>
                 <th>Alternativa Correta</th>
+                <th>Nivel</th>
                 <th>Autor</th>
                 <th>Ação</th>
               </tr>
@@ -49,6 +53,7 @@ function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D}){
                 <td >{id}</td>
                 <td>{enunciado}</td>
                 <td>{enumCerta}</td>
+                <td>{nivel}</td>
                 <td>{autor}</td>
                 <td>
                   <Link to={'/atulizarquestao/?'+id+'?'+cursoCol} className="btn btn-primary ml-1">Editar</Link>

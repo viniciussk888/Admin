@@ -41,7 +41,7 @@ function ListarQuestoes() {
       <h5 className='ml-3 text-right'>Total: {questoes.length}</h5>
       </div>
       {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
-      {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} A={item.A} B={item.B} C={item.C} D={item.D} autor={item.autor} cursoCol={url[1]} />)}
+      {questoes.map(item => <Listagem id={item.id} enunciado={item.enunciado} altCerta={item.altCerta} A={item.A} B={item.B} C={item.C} D={item.D} E={item.E} nivel={item.nivel} autor={item.autor} cursoCol={url[1]} />)}
     </>
   )
 }

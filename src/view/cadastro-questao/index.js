@@ -17,6 +17,8 @@ function CadastroQuestao() {
     const [altB, setAltB] = useState();
     const [altC, setAltC] = useState();
     const [altD, setAltD] = useState();
+    const [altE, setAltE] = useState();
+    const [nivel, setNivel] = useState();
     const [altCerta, setaltCerta] = useState();
     const [carregando, setCarregando] = useState();
     const userEmail = useSelector(state => state.usuarioEmail);
@@ -25,7 +27,7 @@ function CadastroQuestao() {
 
     function submeter() {
         setCarregando(1);
-        if(!curso || !enunciado || !altA || !altB || !altC || !altD || !altCerta){
+        if(!curso || !enunciado || !nivel || !altA || !altB || !altC || !altD || !altE || !altCerta){
             alert("Todos os campos precisam ser preenchidos!");
             setCarregando(0);
             return;
@@ -39,6 +41,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -57,6 +61,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -75,6 +81,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -93,6 +101,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -111,6 +121,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -129,6 +141,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -147,6 +161,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -165,6 +181,8 @@ function CadastroQuestao() {
                     B: altB,
                     C: altC,
                     D: altD,
+                    E: altE,
+                    nivel: nivel,
                     altCerta: altCerta,
                     postada: new Date(),
                     autor: userEmail
@@ -209,6 +227,15 @@ function CadastroQuestao() {
                                 <option value="gestao">Gestão Comercial</option>
                                 <option value="publicitaria">Produção Publicitária</option>
                             </select>
+                            <div className="input-group-prepend">
+                                <label className="input-group-text ub" for="inputGroupSelect02">Nivel</label>
+                            </div>
+                            <select onChange={(e) => setNivel(e.target.value)} className="custom-select" id="inputGroupSelect02">
+                                <option disabled selected>-- Selecione o Nivel --</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
                         </div>
                         <label className='ub font-weight-bold float-left'>Enunciado:</label>
                         <textarea onChange={(e) => setEnunciado(e.target.value)} className="form-control res"></textarea>
@@ -220,6 +247,8 @@ function CadastroQuestao() {
                         <input onChange={(e) => setAltC(e.target.value)} type="text" className="form-control"></input>
                         <label className='ub font-weight-bold float-left'>Alternativa D:</label>
                         <input onChange={(e) => setAltD(e.target.value)} type="text" className="form-control"></input>
+                        <label className='ub font-weight-bold float-left'>Alternativa E:</label>
+                        <input onChange={(e) => setAltE(e.target.value)} type="text" className="form-control"></input>
                     </div>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
@@ -231,6 +260,7 @@ function CadastroQuestao() {
                             <option value="b">B</option>
                             <option value="c">C</option>
                             <option value="d">D</option>
+                            <option value="e">E</option>
                         </select>
                     </div>
                 {
