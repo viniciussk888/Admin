@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Navbar from '../../components/navbar/';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './gerenciar-usuario.css';
 
@@ -17,6 +18,11 @@ function AtualizarUsuario() {
 
     const user = firebase.auth().currentUser;
     const db = firebase.firestore();
+    if (user) {
+        alert("logado");
+      } else {
+        alert("nao logado");
+      }
 
     function alterarEmail() {
         setCarregando(1);
@@ -73,6 +79,7 @@ function AtualizarUsuario() {
     return (
         <>
             <Navbar></Navbar>
+            {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
             <div className="form-cadastro">
                 <form className="text-center form-login mx-auto mt-5">
                     <div className="text-center mb-4">

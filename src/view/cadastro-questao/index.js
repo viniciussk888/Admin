@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './cadastro-questao.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Navbar from '../../components/navbar/';
 import { useSelector } from 'react-redux';
 //Firebase imports
@@ -204,6 +204,7 @@ function CadastroQuestao() {
     return (
         <>
             <Navbar />
+            {useSelector(state => state.usuarioLogado) == 0 ? <Redirect to='/login' /> : null}
             <center><i class="fas fa-folder-plus fa-5x ub"></i></center>
             <div className="col-12">
                 <div className="row">
