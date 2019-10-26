@@ -18,11 +18,8 @@ function AtualizarUsuario() {
 
     const user = firebase.auth().currentUser;
     const db = firebase.firestore();
-    if (user) {
-        alert("logado");
-      } else {
-        alert("nao logado");
-      }
+    
+    
 
     function alterarEmail() {
         setCarregando(1);
@@ -51,22 +48,36 @@ function AtualizarUsuario() {
         }
 
     }
+    function reAuth(){
+        var pass;
+            do {
+                pass = prompt ("Confirmar senha!");
+                } while (pass == null || pass == "");
+                  firebase.auth().signInWithEmailAndPassword(emailUser, pass).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorCode+" - "+errorMessage);
+                    return;
+                  });
+    }
     function deletarUsuario() {
         var result = window.confirm("TEM CERTEZA QUE DESEJA DELETAR USUARIO?!?");
         if (result == true) {
+            reAuth();
             setCarregando(1);
             db.collection("administrador").doc(user.uid).delete().then(function () {
-                alert("USUARIO DELETADO!");
+                firebase.auth().currentUser.delete().then(function () {
+                    alert("USUARIO DELETADO!");
+                    dispatch({ type: 'LOG_OUT' })
+                    window.location.href = "/";
+                }).catch(function (error) {
+                    alert("Erro ao deletar usuario!"+error);
+                    setCarregando(0);
+                });
                 setCarregando(0);
             }).catch(function (error) {
                 alert("ERRO AO DELETAR USUARIO!");
-                setCarregando(0);
-            });
-            user.delete().then(function () {
-                dispatch({ type: 'LOG_OUT' })
-                window.location.href = "/";
-            }).catch(function (error) {
-                alert("Erro ao deletar usuario!");
                 setCarregando(0);
             });
 
