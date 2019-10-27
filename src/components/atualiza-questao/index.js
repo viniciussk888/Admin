@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './atualiza-questao.css';
-import { Redirect } from 'react-router-dom';
-import Navbar from '../../components/navbar/';
 import { useSelector } from 'react-redux';
 //Firebase imports
 import firebase from '../../config/firebase';

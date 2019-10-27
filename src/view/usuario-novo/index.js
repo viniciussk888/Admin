@@ -21,6 +21,13 @@ function NovoUsuario() {
         //função de cadastrar no firestore o professor
         var user = firebase.auth().currentUser;
         var uid = user.uid;
+        user.updateProfile({
+            displayName: nome
+          }).then(function() {
+            // Update successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
         db.collection('administrador').doc(uid).set({
             nome: nome,
             codigoProfessor: codProf,

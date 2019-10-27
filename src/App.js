@@ -14,6 +14,7 @@ import CadastroQuestao from './view/cadastro-questao/'
 import ListarQuestoes from './view/lista-questoes/'
 import AtualizaQuestoes from './view/atualizar-questao/'
 import AtualizarUsuario from './view/gerenciar-usuario/'
+import GerarDados from './view/gerar-dados/'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route exact path='/listarquestao' component={ListarQuestoes} />
       <Route exact path='/atulizarquestao' component={AtualizaQuestoes} />
       <Route exact path='/gerenciarusuario' component={AtualizarUsuario} />
+      <Route exact path='/gerardados' component={GerarDados} />
     </Router>
     </PersistGate>
     </Provider>

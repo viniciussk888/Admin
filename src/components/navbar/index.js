@@ -27,7 +27,7 @@ function Navbar() {
                     <>
                     <li className="nav-item"><Link className="nav-link text-white" to="/cadastroquestao">Submeter Questões</Link></li>
                     <li className="nav-item"><Link className="nav-link text-white" to="/gerenciarusuario">Gerenciar Usuario</Link></li>
-                    <li className="nav-item"><Link className="nav-link text-white" to="#">Gerar Dados</Link></li>
+                    <li className="nav-item"><Link className="nav-link text-white" to="/gerardados">Gerar Dados</Link></li>
                     <li className="nav-item"><Link className="nav-link text-white" onClick={() => dispatch({ type: 'LOG_OUT'})} to="/login">Sair</Link></li>
                     </>
                     }

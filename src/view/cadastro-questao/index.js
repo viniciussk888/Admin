@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './cadastro-questao.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Navbar from '../../components/navbar/';
 import { useSelector } from 'react-redux';
 //Firebase imports

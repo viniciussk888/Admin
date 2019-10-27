@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Navbar from '../../components/navbar/';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './gerenciar-usuario.css';
 
@@ -16,19 +16,20 @@ function AtualizarUsuario() {
     const dispatch = useDispatch();
     const emailUser = useSelector(state => state.usuarioEmail);
 
+
     const user = firebase.auth().currentUser;
-    const db = firebase.firestore();
-    
-    
+    //const db = firebase.firestore();
+
+
 
     function alterarEmail() {
         setCarregando(1);
         user.updateEmail(email).then(function () {
-            alert('Email alterado!');
+            alert('Email alterado! Faça o Login novamente.');
             dispatch({ type: 'LOG_OUT' })
             window.location.href = "/";
         }).catch(function (error) {
-            alert('Erro ao alterar!');
+            alert('Erro ao alterar!\n'+error);
             setCarregando(0);
         });
     }
@@ -39,7 +40,7 @@ function AtualizarUsuario() {
                 alert("Senha alterada!");
                 setCarregando(0);
             }).catch(function (error) {
-                alert("Erro ao alterar Senha!\nPara alterar senha é preciso ter feito login recentemente.");
+                alert("Erro ao alterar Senha!\nObs: Para alterar senha é preciso ter feito login recentemente.\n"+error);
                 setCarregando(0);
             });
         } else {
@@ -48,38 +49,28 @@ function AtualizarUsuario() {
         }
 
     }
-    function reAuth(){
-        var pass;
-            do {
-                pass = prompt ("Confirmar senha!");
-                } while (pass == null || pass == "");
-                  firebase.auth().signInWithEmailAndPassword(emailUser, pass).catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    alert(errorCode+" - "+errorMessage);
-                    return;
-                  });
-    }
     function deletarUsuario() {
+        var UID = user.uid;
         var result = window.confirm("TEM CERTEZA QUE DESEJA DELETAR USUARIO?!?");
         if (result == true) {
-            reAuth();
             setCarregando(1);
-            db.collection("administrador").doc(user.uid).delete().then(function () {
-                firebase.auth().currentUser.delete().then(function () {
-                    alert("USUARIO DELETADO!");
-                    dispatch({ type: 'LOG_OUT' })
-                    window.location.href = "/";
-                }).catch(function (error) {
-                    alert("Erro ao deletar usuario!"+error);
-                    setCarregando(0);
-                });
+            firebase.auth().currentUser.delete().then(function () {
+                
+            }).catch(function (error) {
+                setCarregando(0);
+                dispatch({ type: 'LOG_OUT' });
+                window.location.href = "/login";
+                alert("Erro ao deletar usuario!\n Obs: Para deletar é nescessario ter feito Login recentemente.\n" + error);
+            });
+            firebase.firestore().collection("administrador").doc(UID).delete().then(function () {
+                alert("USUARIO DELETADO!");
+                dispatch({ type: 'LOG_OUT' });
+                window.location.href = "/";
                 setCarregando(0);
             }).catch(function (error) {
-                alert("ERRO AO DELETAR USUARIO!");
+                alert("ERRO AO DELETAR USUARIO!"+ error);
                 setCarregando(0);
-            });
+            });  
 
         } else {
 
