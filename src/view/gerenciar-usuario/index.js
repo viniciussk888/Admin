@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import Navbar from '../../components/navbar/';
-import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './gerenciar-usuario.css';
 
 function AtualizarUsuario() {
@@ -13,12 +13,28 @@ function AtualizarUsuario() {
     const [senha, setSenha] = useState();
     const [senha2, setSenha2] = useState();
     const [carregando, setCarregando] = useState();
+    var credencial;
     const dispatch = useDispatch();
     const emailUser = useSelector(state => state.usuarioEmail);
 
 
     const user = firebase.auth().currentUser;
     //const db = firebase.firestore();
+
+    useEffect(() => {
+        var return_value = 'y';
+        return_value = prompt("Confirme sua senha de Login:");
+        if (return_value == 'y' || return_value == null || return_value == "") {
+            window.location.href = "/";
+        } else {
+            credencial = return_value;
+        }
+    }, []);
+  /*  user.reauthenticateWithCredential(credencial).then(function () {
+        alert("deu certo");
+    }).catch(function (error) {
+        alert("nao deu certo");
+    });   */
 
 
 
@@ -29,7 +45,7 @@ function AtualizarUsuario() {
             dispatch({ type: 'LOG_OUT' })
             window.location.href = "/";
         }).catch(function (error) {
-            alert('Erro ao alterar!\n'+error);
+            alert('Erro ao alterar!\n' + error);
             setCarregando(0);
         });
     }
@@ -40,7 +56,7 @@ function AtualizarUsuario() {
                 alert("Senha alterada!");
                 setCarregando(0);
             }).catch(function (error) {
-                alert("Erro ao alterar Senha!\nObs: Para alterar senha é preciso ter feito login recentemente.\n"+error);
+                alert("Erro ao alterar Senha!\nObs: Para alterar senha é preciso ter feito login recentemente.\n" + error);
                 setCarregando(0);
             });
         } else {
@@ -55,7 +71,7 @@ function AtualizarUsuario() {
         if (result == true) {
             setCarregando(1);
             firebase.auth().currentUser.delete().then(function () {
-                
+
             }).catch(function (error) {
                 setCarregando(0);
                 dispatch({ type: 'LOG_OUT' });
@@ -68,9 +84,9 @@ function AtualizarUsuario() {
                 window.location.href = "/";
                 setCarregando(0);
             }).catch(function (error) {
-                alert("ERRO AO DELETAR USUARIO!"+ error);
+                alert("ERRO AO DELETAR USUARIO!" + error);
                 setCarregando(0);
-            });  
+            });
 
         } else {
 
