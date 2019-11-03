@@ -30,7 +30,7 @@ function ListarQuestoes() {
       setQuestoes(listaQuestoes);
 
     })
-  },[]);
+  },Listagem);
 
   return (
     <>

@@ -9,6 +9,7 @@ function Listagem({id,enunciado,altCerta,autor,cursoCol,A, B, C, D, E, nivel}){
   function deletarQuestao(){
     firebase.firestore().collection(cursoCol).doc(id).delete().then(function() {
       alert("Questão deletada com sucesso!");
+      window.location.reload();
   }).catch(function(error) {
       console.error("Error ao remover:\n ", error);
   });

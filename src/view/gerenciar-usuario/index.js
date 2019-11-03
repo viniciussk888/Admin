@@ -21,22 +21,10 @@ function AtualizarUsuario() {
     const user = firebase.auth().currentUser;
     //const db = firebase.firestore();
 
-    useEffect(() => {
-        var return_value = 'y';
-        return_value = prompt("Confirme sua senha de Login:");
-        if (return_value == 'y' || return_value == null || return_value == "") {
-            window.location.href = "/";
-        } else {
-            credencial = return_value;
-        }
-    }, []);
-  /*  user.reauthenticateWithCredential(credencial).then(function () {
-        alert("deu certo");
-    }).catch(function (error) {
-        alert("nao deu certo");
-    });   */
-
-
+    
+        useEffect(() => {
+            alert("AVISO: Operações de gerencia só podem ser concluidas apos ter feito login recentemente!!\n<--Recomendado relogar-->")
+        },[]);
 
     function alterarEmail() {
         setCarregando(1);
