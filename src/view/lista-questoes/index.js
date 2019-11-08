@@ -11,7 +11,7 @@ function ListarQuestoes() {
   const [questoes, setQuestoes] = useState([]);
   const [pesquisa, setPesquisa] = useState('');
   const listaQuestoes = [];
-  //gambiarra
+  
   var url = window.location;
   url = url.toString()
   url = url.split("?");
@@ -30,7 +30,7 @@ function ListarQuestoes() {
       setQuestoes(listaQuestoes);
 
     })
-  },Listagem);
+  });
 
   return (
     <>
